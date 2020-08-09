@@ -5,8 +5,10 @@ extends Node
 # var a = 2
 # var b = "text"
 
+enum game_state {READY, PLAY, OVER}
 enum {BG, BUTTON, DIE, TOUCH, SCORE}
 var current_scene = null
+var current_state = null
 
 # 加载资源
 onready var audio_bg = preload("res://Assets/Audios/Bg.ogg")

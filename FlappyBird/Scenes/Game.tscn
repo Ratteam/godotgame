@@ -79,6 +79,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ReadyTimer" type="Timer" parent="HUB"]
+wait_time = 1.5
+one_shot = true
+
 [node name="Brid" parent="." instance=ExtResource( 5 )]
 mode = 2
 
@@ -97,4 +101,5 @@ shape = SubResource( 2 )
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 221.746, 593.423 )
 shape = SubResource( 3 )
+[connection signal="timeout" from="HUB/ReadyTimer" to="." method="_on_ReadyTimer_timeout"]
 [connection signal="timeout" from="Pipes/PipeTimer" to="Pipes" method="_on_PipeTimer_timeout"]

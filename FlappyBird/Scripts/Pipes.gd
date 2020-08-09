@@ -8,8 +8,6 @@ onready var pipe = preload("res://Scenes/Pipe.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	# 定时开始
-	$PipeTimer.start()
 	pass # Replace with function body.
 
 
