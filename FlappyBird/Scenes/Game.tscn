@@ -1,0 +1,100 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Assets/Fonts/ZpixEX2_EX-10pix.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Assets/Images/ground.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Images/grass.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Images/ready.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/Brid.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scripts/Pipes.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/Game.gd" type="Script" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 70
+font_data = ExtResource( 1 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 220.065, 16.5865 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 251.563, 17.8465 )
+
+[node name="Game" type="Node2D"]
+script = ExtResource( 7 )
+
+[node name="BgBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="BgBackground"]
+motion_mirroring = Vector2( 430, 0 )
+
+[node name="Sprite" type="Sprite" parent="BgBackground/ParallaxLayer"]
+position = Vector2( 187.492, 298.502 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 2 )
+
+[node name="TopBackgroud" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="TopBackgroud"]
+motion_mirroring = Vector2( 430, 0 )
+
+[node name="Sprite" type="Sprite" parent="TopBackgroud/ParallaxLayer"]
+position = Vector2( 220.216, -25.3266 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 3 )
+flip_v = true
+
+[node name="BouttomBackgroud" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="BouttomBackgroud"]
+motion_mirroring = Vector2( 430, 0 )
+
+[node name="Sprite" type="Sprite" parent="BouttomBackgroud/ParallaxLayer"]
+position = Vector2( 222.736, 660.07 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 3 )
+
+[node name="HUB" type="CanvasLayer" parent="."]
+
+[node name="Score" type="Label" parent="HUB"]
+margin_left = 23.973
+margin_top = 77.9119
+margin_right = 63.973
+margin_bottom = 143.912
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Ready" type="TextureRect" parent="HUB"]
+margin_left = 40.0
+margin_top = 80.0
+margin_right = 224.0
+margin_bottom = 130.0
+rect_scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Brid" parent="." instance=ExtResource( 5 )]
+mode = 2
+
+[node name="Pipes" type="Node2D" parent="."]
+script = ExtResource( 6 )
+
+[node name="PipeTimer" type="Timer" parent="Pipes"]
+wait_time = 3.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 186.468, 41.5774 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 221.746, 593.423 )
+shape = SubResource( 3 )
+[connection signal="timeout" from="Pipes/PipeTimer" to="Pipes" method="_on_PipeTimer_timeout"]
