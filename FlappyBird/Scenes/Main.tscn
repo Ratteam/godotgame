@@ -56,7 +56,7 @@ position = Vector2( 280, 235 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
 animation = "red"
-frame = 3
+frame = 2
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
@@ -64,6 +64,7 @@ position = Vector2( 180, 235 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
 animation = "yellow"
+frame = 1
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="."]
@@ -71,5 +72,5 @@ position = Vector2( 80, 235 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
 animation = "blue"
-frame = 2
+frame = 1
 playing = true

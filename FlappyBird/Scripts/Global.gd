@@ -4,11 +4,13 @@ extends Node
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-
+const FILE_PATH = "user:game.data"
 enum game_state {READY, PLAY, OVER}
 enum {BG, BUTTON, DIE, TOUCH, SCORE}
 var current_scene = null
 var current_state = null
+var last_score = 0
+var base_score = 0 setget set_score
 
 # 加载资源
 onready var audio_bg = preload("res://Assets/Audios/Bg.ogg")
@@ -67,6 +69,24 @@ func play_audio(audio_name):
 	# 播放完就销毁掉
 	yield(audio_play_sfx,"finished")
 	audio_play_sfx.queue_free()
+	
+func set_score(value):
+	base_score = value
+
+func save_score():
+	var file = File.new()
+	file.open(FILE_PATH,file.WRITE)
+	file.store_var(base_score)
+	file.close()
+
+func load_score():
+	var file = File.new()
+	if file.file_exists(FILE_PATH):
+		file.open(FILE_PATH,file.READ)
+		base_score = file.get_var()
+		file.close()
+	pass
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

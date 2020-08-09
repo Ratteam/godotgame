@@ -1,6 +1,6 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://Scripts/RigidBody2D.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Brid.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Images/blue3.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Images/red2.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Images/yellow3.png" type="Texture" id=4]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Assets/Images/yellow2.png" type="Texture" id=8]
 [ext_resource path="res://Assets/Images/red1.png" type="Texture" id=9]
 [ext_resource path="res://Assets/Images/blue2.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Images/birddie.png" type="Texture" id=11]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -27,19 +28,24 @@ animations = [ {
 "loop": true,
 "name": "red",
 "speed": 8.0
+}, {
+"frames": [ ExtResource( 11 ) ],
+"loop": true,
+"name": "die",
+"speed": 5.0
 } ]
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 13.0255
 
 [node name="Brid" type="RigidBody2D"]
+contacts_reported = 5
 script = ExtResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 119.646, 200.707 )
 frames = SubResource( 1 )
-animation = "yellow"
-frame = 3
+animation = "die"
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

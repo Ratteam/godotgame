@@ -10,11 +10,9 @@ onready var pipe = preload("res://Scenes/Pipe.tscn")
 func _ready():
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-
 
 func _on_PipeTimer_timeout():
 	# 添加管道
