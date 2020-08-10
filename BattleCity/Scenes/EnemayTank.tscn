@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/Tank.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/onlyObjects_default.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/EnemayTank.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 20.1093, 20.4002 )
+
+[node name="EnemayTank" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+speed = 200
+rotation_speed = 1.0
+gun_cooldown = 0.4
+health = 100
+
+[node name="Body" parent="." index="0"]
+rotation = -1.5708
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 260.066, 80.0835, 37.8568, 40.0098 )
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource( 1 )
+
+[node name="Turret" parent="." index="2"]
+rotation = -1.5708
+texture = ExtResource( 2 )
+offset = Vector2( 0, 10 )
+region_enabled = true
+region_rect = Rect2( 355.738, 59.8264, 12.2381, 30.2916 )
+
+[node name="Muzzle" parent="Turret" index="0"]
+position = Vector2( 0, 30 )
