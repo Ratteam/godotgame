@@ -28,7 +28,6 @@ region_rect = Rect2( 260.066, 80.0835, 37.8568, 40.0098 )
 shape = SubResource( 1 )
 
 [node name="Turret" parent="." index="2"]
-rotation = -1.5708
 texture = ExtResource( 2 )
 offset = Vector2( 0, 10 )
 region_enabled = true
