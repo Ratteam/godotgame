@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Tank.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/onlyObjects_default.png" type="Texture" id=2]
@@ -7,12 +7,16 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 20.1093, 20.4002 )
 
+[sub_resource type="CircleShape2D" id=2]
+
 [node name="EnemayTank" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
 speed = 200
 rotation_speed = 1.0
 gun_cooldown = 0.4
 health = 100
+turret_speed = 1.0
+detect_radius = 200
 
 [node name="Body" parent="." index="0"]
 rotation = -1.5708
@@ -32,3 +36,10 @@ region_rect = Rect2( 355.738, 59.8264, 12.2381, 30.2916 )
 
 [node name="Muzzle" parent="Turret" index="0"]
 position = Vector2( 0, 30 )
+
+[node name="DetectRadius" type="Area2D" parent="." index="4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectRadius" index="0"]
+shape = SubResource( 2 )
+[connection signal="body_entered" from="DetectRadius" to="." method="_on_DetectRadius_body_entered"]
+[connection signal="body_exited" from="DetectRadius" to="." method="_on_DetectRadius_body_exited"]
