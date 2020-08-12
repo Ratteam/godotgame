@@ -1,11 +1,11 @@
 extends KinematicBody2D
 
 # 加速度
-const ACCELERATION = 10
+const ACCELERATION = 500
 # 最大速度
 const MAX_SPEED = 100
 # 摩擦力
-const FRICTION = 10
+const FRICTION = 500
 
 # 坐标点
 var velocity = Vector2.ZERO
@@ -21,13 +21,12 @@ func _physics_process(delta):
 	input_vector = input_vector.normalized()
 	# 判断是否移动
 	if input_vector != Vector2.ZERO:
-		# 增加移动速度
-		velocity += input_vector * ACCELERATION * delta
-		# 限制移动速度最大值
-		velocity = velocity.clamped(MAX_SPEED * delta)
+		# 开始移动
+		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
 	else:
 		# 停止移动时，添加摩擦力
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
-	print(input_vector)
+	# 打印
+	print(velocity)
 	# 依据坐标移动
-	move_and_collide(velocity)
+	move_and_collide(velocity * delta)
