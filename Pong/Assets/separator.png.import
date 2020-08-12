@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/left_pallete.png-d9603fe58323f3f860f9587e018e3abb.stex"
+path="res://.import/separator.png-06cd69003a1f0f8a6d28a666a7595780.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://pong_assets/left_pallete.png"
-dest_files=[ "res://.import/left_pallete.png-d9603fe58323f3f860f9587e018e3abb.stex" ]
+source_file="res://Assets/separator.png"
+dest_files=[ "res://.import/separator.png-06cd69003a1f0f8a6d28a666a7595780.stex" ]
 
 [params]
 
