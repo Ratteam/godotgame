@@ -3,12 +3,17 @@ extends KinematicBody2D
 # 加速度
 const ACCELERATION = 500
 # 最大速度
-const MAX_SPEED = 100
+const MAX_SPEED = 80
 # 摩擦力
 const FRICTION = 500
 
 # 坐标点
 var velocity = Vector2.ZERO
+
+# 获取子节点
+onready var animationPlayer = $AnimationPlayer
+onready var animationTree = $AnimationTree
+onready var animationState = animationTree.get("parameters/playback")
 
 # 每帧调用
 func _physics_process(delta):
@@ -21,12 +26,15 @@ func _physics_process(delta):
 	input_vector = input_vector.normalized()
 	# 判断是否移动
 	if input_vector != Vector2.ZERO:
+		# 播放移动动画
+		animationTree.set("parameters/Idle/blend_position", input_vector)
+		animationTree.set("parameters/Run/blend_position", input_vector)
+		animationState.travel("Run")
 		# 开始移动
 		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
 	else:
+		animationState.travel("Idle")
 		# 停止移动时，添加摩擦力
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
-	# 打印
-	print(velocity)
 	# 依据坐标移动
-	move_and_collide(velocity * delta)
+	velocity = move_and_slide(velocity)
