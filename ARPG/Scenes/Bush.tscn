@@ -7,6 +7,8 @@ radius = 9.53345
 height = 8.49765
 
 [node name="Bush" type="StaticBody2D"]
+collision_layer = 0
+collision_mask = 0
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
