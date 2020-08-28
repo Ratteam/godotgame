@@ -1,13 +1,13 @@
 extends KinematicBody2D
 
 # 加速度
-const ACCELERATION = 500
+export var ACCELERATION = 500
 # 最大速度
-const MAX_SPEED = 80
+export var MAX_SPEED = 80
 # 滚动速度
-const ROLL_SPEED = 120
+export var ROLL_SPEED = 120
 # 摩擦力
-const FRICTION = 500
+export var FRICTION = 500
 
 # 自定义玩家状态
 enum {
@@ -26,9 +26,11 @@ var roll_vector = Vector2.ZERO
 onready var animationPlayer = $AnimationPlayer
 onready var animationTree = $AnimationTree
 onready var animationState = animationTree.get("parameters/playback")
+onready var swordHitBox = $HitBoxPosition/SwordHitbox
 
 func _ready():
 	animationTree.active = true
+	swordHitBox.knockback_vector = roll_vector
 
 # 每帧调用
 func _process(delta):
@@ -53,6 +55,7 @@ func move_state(delta):
 	# 判断是否移动
 	if input_vector != Vector2.ZERO:
 		roll_vector = input_vector
+		swordHitBox.knockback_vector = input_vector
 		# 播放移动动画
 		animationTree.set("parameters/Idle/blend_position", input_vector)
 		animationTree.set("parameters/Run/blend_position", input_vector)
