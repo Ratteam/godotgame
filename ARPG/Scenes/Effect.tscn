@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Assets/Effects/GrassEffect.png" type="Texture" id=1]
-[ext_resource path="res://Scripts/Effect.gd" type="Script" id=2]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -36,9 +35,11 @@ animations = [ {
 "speed": 15.0
 } ]
 
-[node name="GrassEffect" type="AnimatedSprite"]
+[node name="GrassEffect" type="Node2D"]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 6 )
 animation = "Animate"
 centered = false
 offset = Vector2( -8, -8 )
-script = ExtResource( 2 )
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
