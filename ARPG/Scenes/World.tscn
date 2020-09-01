@@ -959,6 +959,7 @@ collision_mask = 0
 
 [node name="Bush" parent="YSort/Bushs" instance=ExtResource( 2 )]
 position = Vector2( 81.0852, 46.5503 )
+collision_mask = 2147483650
 
 [node name="Bush2" parent="YSort/Bushs" instance=ExtResource( 2 )]
 position = Vector2( 76.8426, 109.483 )
