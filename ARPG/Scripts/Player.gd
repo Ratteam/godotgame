@@ -21,14 +21,16 @@ var state = MOVE
 # 坐标点
 var velocity = Vector2.ZERO
 var roll_vector = Vector2.ZERO
-
+var states = PlayerStats
 # 获取子节点
 onready var animationPlayer = $AnimationPlayer
 onready var animationTree = $AnimationTree
 onready var animationState = animationTree.get("parameters/playback")
 onready var swordHitBox = $HitBoxPosition/SwordHitbox
+onready var hurtbox = $Hurtbox
 
 func _ready():
+	states.connect("no_health",self,"queue_free")
 	animationTree.active = true
 	swordHitBox.knockback_vector = roll_vector
 
@@ -99,4 +101,9 @@ func roll_animation_finished():
 # 监听攻击动画结束函数
 func attack_animation_finished():
 	state = MOVE
+
+func _on_Hurtbox_area_entered(area):
+	states.health -= 1
+	hurtbox.start_invincibility(0.5)
+	hurtbox.create_hit_effect()
 	

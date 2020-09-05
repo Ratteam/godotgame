@@ -16,6 +16,7 @@ const EnemyDeathEffect = preload("res://Scenes/EnemyDeathEffect.tscn")
 onready var stats = $Stats
 onready var playerDetectionZoom = $PlayerDetectionZoom
 onready var sprite = $AnimatedSprite
+onready var hurtbox = $Hurtbox
 
 var knockback = Vector2.ZERO
 var velocity = Vector2.ZERO
@@ -55,3 +56,4 @@ func _on_Stats_no_health():
 func _on_Hurtbox_area_entered(area):
 	stats.health -= area.damage
 	knockback = area.knockback_vector * 120
+	hurtbox.create_hit_effect()
