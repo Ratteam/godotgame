@@ -7,8 +7,8 @@
 [ext_resource path="res://Scenes/Hurtbox.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 8.28867
-height = 6.83844
+radius = 11.9453
+height = 0.0
 
 [sub_resource type="Animation" id=2]
 resource_name = "AttackDown"
@@ -650,7 +650,7 @@ height = 12.0
 
 [sub_resource type="CapsuleShape2D" id=47]
 radius = 6.45601
-height = 11.6466
+height = 6.03431
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 121.831, 43.1503 )
@@ -664,7 +664,7 @@ hframes = 60
 frame = 18
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -0.636749, 9.12715 )
+position = Vector2( -0.636749, 7.16286 )
 rotation = -1.5708
 scale = Vector2( 0.5, 0.5 )
 shape = SubResource( 1 )
@@ -721,6 +721,6 @@ disabled = true
 collision_layer = 4
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2( -0.420921, 0.77169 )
+position = Vector2( -0.561234, 3.71816 )
 shape = SubResource( 47 )
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]

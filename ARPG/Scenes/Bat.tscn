@@ -47,11 +47,10 @@ height = 0.476089
 radius = 40.7456
 
 [sub_resource type="CircleShape2D" id=10]
-radius = 5.33244
+radius = 7.40074
 
 [node name="Bat" type="KinematicBody2D"]
 collision_layer = 16
-collision_mask = 3
 script = ExtResource( 4 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
@@ -71,7 +70,7 @@ shape = SubResource( 7 )
 collision_layer = 8
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2( 0.111362, -15.1453 )
+position = Vector2( -0.111362, -15.4794 )
 shape = SubResource( 8 )
 
 [node name="Stats" parent="." instance=ExtResource( 5 )]
@@ -79,14 +78,14 @@ shape = SubResource( 8 )
 [node name="PlayerDetectionZoom" parent="." instance=ExtResource( 3 )]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="PlayerDetectionZoom"]
-position = Vector2( -7.62939e-06, -15.0339 )
+position = Vector2( -0.111366, -15.5907 )
 shape = SubResource( 9 )
 
 [node name="Hitbox" parent="." instance=ExtResource( 7 )]
 collision_mask = 4
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2( -0.111359, -14.8112 )
+position = Vector2( -0.222729, -15.5907 )
 shape = SubResource( 10 )
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 [connection signal="no_health" from="Stats" to="." method="_on_Stats_no_health"]
