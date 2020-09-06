@@ -1,10 +1,11 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Player/Player.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Hitbox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scripts/SwordHitbox.gd" type="Script" id=4]
 [ext_resource path="res://Scenes/Hurtbox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Shadows/MediumShadow.png" type="Texture" id=6]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 11.9453
@@ -650,7 +651,7 @@ height = 12.0
 
 [sub_resource type="CapsuleShape2D" id=47]
 radius = 6.45601
-height = 6.03431
+height = 5.58024
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 121.831, 43.1503 )
@@ -658,13 +659,17 @@ collision_layer = 2
 collision_mask = 2147483649
 script = ExtResource( 1 )
 
+[node name="SpriteShadow" type="Sprite" parent="."]
+position = Vector2( -0.5, 11 )
+texture = ExtResource( 6 )
+
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 hframes = 60
 frame = 18
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -0.636749, 7.16286 )
+position = Vector2( -0.5, 7 )
 rotation = -1.5708
 scale = Vector2( 0.5, 0.5 )
 shape = SubResource( 1 )
@@ -721,6 +726,6 @@ disabled = true
 collision_layer = 4
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2( -0.561234, 3.71816 )
+position = Vector2( -0.5, 3 )
 shape = SubResource( 47 )
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
