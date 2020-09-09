@@ -1,4 +1,4 @@
-[gd_scene load_steps=106 format=2]
+[gd_scene load_steps=107 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Bush.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Scenes/Bat.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/HealthUI.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/Tree.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Camera2D.tscn" type="PackedScene" id=10]
 
 [sub_resource type="TileSet" id=1]
 0/name = "DirtTileset.png 0"
@@ -952,10 +953,14 @@ collision_mask = 2
 format = 1
 tile_data = PoolIntArray( -1, 0, 0, -65536, 0, 1, -65535, 0, 1, -65534, 0, 1, -65533, 0, 2, -65529, 0, 0, -65528, 0, 1, -65527, 0, 1, -65526, 0, 2, 65535, 0, 65536, 0, 0, 65537, 1, 0, 65541, 2, 0, 131073, 3, 0, 131074, 7, 0, 131072, 8, 0, 65542, 9, 0, 65541, 10, 0, 131074, 131071, 0, 131072, 65536, 0, 131073, 65537, 0, 131074, 65544, 0, 131072, 65545, 0, 131074, 196612, 0, 3, 196616, 0, 0, 196617, 0, 1, 196618, 0, 2, 262144, 0, 0, 262145, 0, 1, 262146, 0, 1, 262147, 0, 1, 262148, 0, 131079, 262151, 0, 196608, 262152, 0, 196614, 262153, 0, 65544, 262154, 0, 131074, 327680, 0, 131072, 327681, 0, 131073, 327682, 0, 131073, 327683, 0, 131073, 327684, 0, 131074, 327689, 0, 131075 )
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" parent="." instance=ExtResource( 10 )]
 position = Vector2( 121.831, 43.1503 )
-current = true
-smoothing_enabled = true
+
+[node name="TopLeft" parent="Camera2D/Limits" index="0"]
+position = Vector2( -31.6198, -31.6197 )
+
+[node name="BottomRight" parent="Camera2D/Limits" index="1"]
+position = Vector2( 351.62, 188.495 )
 
 [node name="YSort" type="YSort" parent="."]
 
@@ -1033,3 +1038,5 @@ margin_left = 4.71938
 margin_top = 3.7755
 margin_right = 64.7194
 margin_bottom = 14.7755
+
+[editable path="Camera2D"]
